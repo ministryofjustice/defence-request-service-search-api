@@ -1,6 +1,5 @@
 class SolicitorsController < ApplicationController
 
-
   def index
     solicitors = Solicitor.all
     render json: solicitors

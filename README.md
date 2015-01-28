@@ -9,6 +9,7 @@ rake server will run this app on port 4000
 #### index - /solicitors
 #### show - /solicitors/:id
 #### search - /solicitors/search/:query
+#### search_solicitor - /firms/:id/solicitors/search/:query
 ```
 {
   "solicitors": [
@@ -31,6 +32,7 @@ rake server will run this app on port 4000
 #### index - /firms
 #### show - /firms/:id/solicitors
 #### search - /firms/search/:query
+
 ```
 {
   "firms": [
