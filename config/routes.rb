@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
-  get 'search/:q' => 'search#search', as: :search
+  match 'search', to: 'search#search', via: [:post]
 
   resources :solicitors do
     collection do
-      get 'search/:q' => 'solicitors#search'
+      match 'search', to: 'solicitors#search', via: [:post]
     end
   end
 
   resources :firms do
     collection do
-      get 'search/:q' => 'firms#search'
+      match 'search', to: 'firms#search', via: [:post]
     end
 
     resources :solicitors do
       collection do
-        get 'search/:q' => 'solicitors#search'
+        match 'search', to: 'solicitors#search', via: [:post]
       end
     end
   end
