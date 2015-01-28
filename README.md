@@ -1,8 +1,6 @@
 # solicitor-search-api
 == README
 
-rake server will run this app on port 4000
-
 ## endpoints
 ### Solicitors
 
