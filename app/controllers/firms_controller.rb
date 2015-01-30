@@ -1,19 +1,18 @@
 class FirmsController < ApplicationController
 
-
   def index
-    firms = Firm.includes([:solicitors]).as_json(methods: :solicitors)
-    render json: firms
+    firms = Firm.includes(:solicitors).limit(10)
+    render json: { firms: firms }, include: :solicitors
   end
 
   def show
-    firms = Firm.find(params[:id]).as_json(methods: :solicitors)
-    render json: firms
+    firm = Firm.find(params[:id])
+    render json: { firm: firm }, include: :solicitors
   end
 
   def search
     search_term = params[:q]
-    firms = Firm.search('name',search_term).as_json(methods: :solicitors)
-    render json: firms
+    firms = Firm.search('name',search_term).limit(10)
+    render json: { firms: firms }, include: :solicitors
   end
 end
