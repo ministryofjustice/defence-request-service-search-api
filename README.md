@@ -1,6 +1,11 @@
 # solicitor-search-api
 == README
 
+## Limits
+The number of records returned is limited to 10 for solicitors and firms.
+All solicitors are returned for a firm
+
+
 ## endpoints
 ### Solicitors
 

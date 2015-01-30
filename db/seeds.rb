@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-1.upto(10) do
+1.upto(100) do
   #Seed with 10 firms
   firm_name = Faker::Company.name
   firm_address = Faker::Address.street_address + ' ' +Faker::Address.country
@@ -23,7 +23,7 @@
 
   firm_id = firm.id
   #For each firm create 5 solicitors
-  1.upto(5) do
+  1.upto(25) do
     solicitor_name = Faker::Name.name
     solicitor_address = Faker::Address.street_address + ' ' + Faker::Address.country
     solicitor_postcode = ('A'..'Z').to_a.sample + ('A'..'Z').to_a.sample + ('1'..'9').to_a.sample + ' ' + ('1'..'9').to_a.sample + ('A'..'Z').to_a.sample + ('A'..'Z').to_a.sample
