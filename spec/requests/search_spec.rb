@@ -44,6 +44,17 @@ RSpec.describe "Search API", type: :request do
     end
   end
 
+  it 'returns all solicitors for each firm' do
+      firm = Firm.create
+      solicitor = Solicitor.create firm: firm
+
+      post '/search'
+
+      json_response = json['firms'].first
+      expect(json_response['solicitors']).to be_a(Array)
+      expect(json_response['solicitors'].first['id']).to eq(solicitor.id)
+    end
+
   it 'returns a maxiumum of 10 results' do
     11.times do 
       Solicitor.create
