@@ -11,8 +11,8 @@ RSpec.describe "Solicitors API", type: :request do
   end
 
   it 'returns solicitors that match the search term' do
-    solicitor1 = Solicitor.create name: 'Bob'
-    solicitor2 = Solicitor.create name: 'Alan'
+    Solicitor.create name: 'Bob'
+    solicitor = Solicitor.create name: 'Alan'
 
     post '/solicitors/search', { q: 'alan' }
 
@@ -22,7 +22,7 @@ RSpec.describe "Solicitors API", type: :request do
     json_response = json['solicitors'].first
 
     ['id', 'name', 'address', 'postcode', 'mobile', 'email'].each do |field|
-      expect(json_response[field]).to eq(solicitor2.send(field))
+      expect(json_response[field]).to eq(solicitor.send(field))
     end
   end
 

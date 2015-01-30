@@ -13,8 +13,8 @@ RSpec.describe "Search API", type: :request do
   end
 
   it 'returns solicitors that match the search term' do
-    solicitor1 = Solicitor.create name: 'Bob'
-    solicitor2 = Solicitor.create name: 'Alan'
+    Solicitor.create name: 'Bob'
+    solicitor = Solicitor.create name: 'Alan'
 
     post '/search', { q: 'alan' }
 
@@ -24,13 +24,13 @@ RSpec.describe "Search API", type: :request do
     json_response = json['solicitors'].first
 
     ['id', 'name', 'address', 'postcode', 'mobile', 'email'].each do |field|
-      expect(json_response[field]).to eq(solicitor2.send(field))
+      expect(json_response[field]).to eq(solicitor.send(field))
     end
   end
 
   it 'returns firms that match the search term' do
-    firm1 = Firm.create name: 'Clearwater'
-    firm2 = Firm.create name: 'Roberts and Horse'
+    Firm.create name: 'Clearwater'
+    firm = Firm.create name: 'Roberts and Horse'
 
     post '/search', { q: 'roberts' }
 
@@ -40,7 +40,7 @@ RSpec.describe "Search API", type: :request do
     json_response = json['firms'].first
 
     ['id', 'name', 'address', 'postcode', 'tel', 'email'].each do |field|
-      expect(json_response[field]).to eq(firm2.send(field))
+      expect(json_response[field]).to eq(firm.send(field))
     end
   end
 

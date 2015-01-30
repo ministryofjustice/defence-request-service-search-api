@@ -11,8 +11,8 @@ RSpec.describe "Firms API", type: :request do
   end
 
   it 'returns firms that match the search term' do
-    firm1 = Firm.create name: 'Clearwater'
-    firm2 = Firm.create name: 'Roberts and Horse'
+    Firm.create name: 'Clearwater'
+    firm = Firm.create name: 'Roberts and Horse'
 
     post '/firms/search', { q: 'roberts' }
 
@@ -22,7 +22,7 @@ RSpec.describe "Firms API", type: :request do
     json_response = json['firms'].first
 
     ['id', 'name', 'address', 'postcode', 'tel', 'email'].each do |field|
-      expect(json_response[field]).to eq(firm2.send(field))
+      expect(json_response[field]).to eq(firm.send(field))
     end
   end
 
