@@ -7,7 +7,6 @@ gem 'spring', :group => :development
 gem 'unicorn'
 
 gem 'pg'
-gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 
 gem 'faker'
