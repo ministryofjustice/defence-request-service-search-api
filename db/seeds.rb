@@ -30,7 +30,7 @@ srand(100)
     solicitor_address = Faker::Address.street_address + ' ' + Faker::Address.country
     solicitor_postcode = ('A'..'Z').to_a.sample + ('A'..'Z').to_a.sample + ('1'..'9').to_a.sample + ' ' + ('1'..'9').to_a.sample + ('A'..'Z').to_a.sample + ('A'..'Z').to_a.sample
     solicitor_tel = ['0207 284 1111','0207 284 2222','0207 284 3333','0207 284 4444','0207 284 5555','0207 284 6666'].sample
-    solicitor_email = Faker::Internet.email
+    solicitor_email = Faker::Internet.safe_email
 
     Solicitor.where(email: solicitor_email ).first_or_create(
       name: solicitor_name,
