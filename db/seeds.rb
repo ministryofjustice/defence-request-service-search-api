@@ -5,8 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+#
+NUMBER_OF_FIRMS = 100
+SOLICITORS_PER_FIRM = 25
+NUMBER_OF_SOLICITORS = NUMBER_OF_FIRMS * SOLICITORS_PER_FIRM
 
-1.upto(100) do
+srand(100)
+
+solicitor_emails = Array.new(NUMBER_OF_SOLICITORS) { Faker::Internet.safe_email }.to_enum
+
+1.upto(NUMBER_OF_FIRMS) do
   #Seed with 10 firms
   firm_name = Faker::Company.name
   firm_address = Faker::Address.street_address + ' ' +Faker::Address.country
@@ -22,13 +30,12 @@
     email: firm_email)
 
   firm_id = firm.id
-  #For each firm create 5 solicitors
-  1.upto(25) do
+  1.upto(SOLICITORS_PER_FIRM) do
     solicitor_name = Faker::Name.name
     solicitor_address = Faker::Address.street_address + ' ' + Faker::Address.country
     solicitor_postcode = ('A'..'Z').to_a.sample + ('A'..'Z').to_a.sample + ('1'..'9').to_a.sample + ' ' + ('1'..'9').to_a.sample + ('A'..'Z').to_a.sample + ('A'..'Z').to_a.sample
     solicitor_tel = ['0207 284 1111','0207 284 2222','0207 284 3333','0207 284 4444','0207 284 5555','0207 284 6666'].sample
-    solicitor_email = Faker::Internet.email
+    solicitor_email = solicitor_emails.next
 
     Solicitor.where(email: solicitor_email ).first_or_create(
       name: solicitor_name,
