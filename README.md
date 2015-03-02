@@ -1,5 +1,8 @@
 # solicitor-search-api
-== README
+
+[![Code Climate](https://codeclimate.com/github/ministryofjustice/solicitor-search-api/badges/gpa.svg)] (https://codeclimate.com/github/ministryofjustice/solicitor-search-api)
+
+[![Test Coverage](https://codeclimate.com/github/ministryofjustice/solicitor-search-api/badges/coverage.svg)] (https://codeclimate.com/github/ministryofjustice/solicitor-search-api)
 
 ## Limits
 The number of records returned is limited to 10 for solicitors and firms.
