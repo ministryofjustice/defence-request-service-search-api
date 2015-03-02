@@ -13,8 +13,6 @@ unless ENV['NO_COVERAGE']
     SimpleCov.coverage_dir File.join("..", "..", "..", ENV['CIRCLE_ARTIFACTS'], "coverage")
   end
 
-  SimpleCov.minimum_coverage 80 # will return non-zero exit code if < 80%
-  SimpleCov.refuse_coverage_drop # will return non-zero exit code if coverage drops
   SimpleCov.start 'rails' do
 
     if defined?(CodeClimate)
