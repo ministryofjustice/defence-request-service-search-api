@@ -11,6 +11,11 @@ gem 'rack-cors', require: 'rack/cors'
 
 gem 'faker'
 
+group :test do
+  gem 'simplecov', require: false
+  gem "codeclimate-test-reporter", require: false
+end
+
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.0.0'
